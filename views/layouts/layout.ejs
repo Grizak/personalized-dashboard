@@ -7,6 +7,22 @@
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+  <header>
+    <h1>Persionalized Dashboard - <%= title %></h1>
+    <nav>
+      <ul>
+        <!-- Navigation for website -->
+         <% if (!desktop) { %>
+          <li><a href="/">Home</a></li>
+          <li><a href="/contact">Contact</a></li>
+        <% } else if (desktop) { %>
+          <li><a href="/desktop">Home</a></li>
+          <li><a href="/desktop/contact">Contact</a></li>
+        <% } %>
+      </ul>
+    </nav>
+  </header>
+  
   <main>
     <%- body %>
   </main>

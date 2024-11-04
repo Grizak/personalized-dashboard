@@ -13,20 +13,12 @@ app.use(expressLayouts);
 app.set('layout', 'layouts/layout')
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(express.urlencoded({ extended: true }))
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Routes
-app.get('/', (req, res) => {
-  res.render('index', { title: 'Home' });
-});
-
-app.get('/desktop', (req, res) => {
-  res.render('index', { title: 'Desktop Version' });
-});
-
-app.get('/contact', (req, res) => {
-  res.render('contact', { title: 'Contact Us' });
-});
+app.use('/', require('./routes/index'));
+app.use('/desktop', require('./routes/desktop'));
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
